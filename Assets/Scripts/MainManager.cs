@@ -11,11 +11,12 @@ public class MainManager : MonoBehaviour
     public Rigidbody Ball;
 
     public Text ScoreText;
+    public Text HightScoreName;
     public GameObject GameOverText;
     
     private bool m_Started = false;
     private int m_Points;
-    
+    private DataAndScineManager data=new DataAndScineManager();
     private bool m_GameOver = false;
 
     
@@ -24,7 +25,7 @@ public class MainManager : MonoBehaviour
     {
         const float step = 0.6f;
         int perLine = Mathf.FloorToInt(4.0f / step);
-        
+        HightScoreName.text = data.name;
         int[] pointCountArray ={1,1,2,2,5,5};
         for (int i = 0; i < LineCount; ++i)
         {
@@ -58,6 +59,10 @@ public class MainManager : MonoBehaviour
             if (Input.GetKeyDown(KeyCode.Space))
             {
                 SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+            }
+            else if (Input.GetKeyDown(KeyCode.Escape))
+            {
+                SceneManager.LoadScene(0);
             }
         }
     }
